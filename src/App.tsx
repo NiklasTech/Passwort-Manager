@@ -1,40 +1,51 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import React, { useState } from "react";
+import { TextField } from "./components/TextField";
+import { Button } from "./components/Buttons";
 
-function App() {
-  const [count, setCount] = useState(0);
+export function App() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [custom, setCustom] = useState("");
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
+      <h1 className="text-white text-2xl mb-6">iOS-Style TextField</h1>
+
+      <div className="w-80 space-y-4">
+        <TextField
+          label="Benutzername"
+          placeholder="Gib deinen Namen ein..."
+          type="text"
+          value={username}
+          onChange={setUsername}
+        />
+        <TextField
+          label="E-Mail"
+          placeholder="Gib deine E-Mail ein..."
+          type="email"
+          value={email}
+          onChange={setEmail}
+        />
+        <TextField
+          label="Passwort"
+          placeholder="••••••••"
+          type="password"
+          value={password}
+          onChange={setPassword}
+        />
+        <TextField
+          label="Ohne Icon"
+          placeholder="Kein Icon hier..."
+          type=""
+          value={custom}
+          onChange={setCustom}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button
-          onClick={() => {
-            console.log("Button clicked");
-            setCount((count: number) => count + 1);
-          }}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+      <Button variant="primary" className="mt-6">
+        Absenden
+      </Button>
+    </div>
   );
 }
-
-export default App;
